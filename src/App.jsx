@@ -45,19 +45,20 @@ const App = () => {
       {1 && <Confetti numberOfPieces={300} recycle={true} />}
 
       {/* Scrolling Images */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 .scroll-container">
-        <div className="flex h-full w-max animate-scroll-x scroll-track">
-          {[...images, ...images].map((img, index) => (
-            <img
-              key={index}
-              src={img}
-              alt={`img${index}`}
-              className="h-full w-auto object-cover mx-2"
-              loading="eager"
-            />
-          ))}
-        </div>
-      </div>
+      <div className="scroll-container">
+  <div className="scroll-track">
+    {[...images, ...images].map((img, index) => (
+      <img
+        key={index}
+        src={img}
+        alt={`img${index}`}
+        className="scroll-image"
+        loading="lazy"
+      />
+    ))}
+  </div>
+</div>
+
 
       {/* Birthday Message */}
       <div className="absolute bottom-10 w-full flex justify-center items-center z-10">
