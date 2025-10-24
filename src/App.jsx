@@ -53,7 +53,7 @@ const App = () => {
               src={img}
               alt={`img${index}`}
               className="h-full w-auto object-cover mx-2"
-              loading="lazy"
+              loading="eager"
             />
           ))}
         </div>

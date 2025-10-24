@@ -23,6 +23,10 @@ img {
   backface-visibility: hidden;
   transform: translateZ(0);
   animation: scroll 25s linear infinite;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  will-change: transform;
+  min-width: 200%;
   
 }
 
