@@ -50,7 +50,7 @@ img {
 @media (max-width:600px) {
   .scroll-track {
   display: inline-flex;
-  animation: scroll 5s linear infinite;
+  animation: scroll 10s linear infinite;
  
 }
 }
