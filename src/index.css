@@ -40,6 +40,6 @@ html, body {
 
 @media (max-width: 600px) {
   .scroll-track {
-    animation: scroll 12s linear infinite; /* Faster scroll on mobile */
+    animation: scroll 15s linear infinite; /* Faster scroll on mobile */
   }
 }
