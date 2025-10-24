@@ -9,7 +9,7 @@ import img2 from "./assets/img2.jpg";
 import img3 from "./assets/img4.jpg";
 import music from "./assets/birthdayMusic.mp3";
 
-const images = [img1, img2, img3,img1, img2, img3];
+const images = [img1, img2, img3,img1, img2, img3,img1, img2, img3,img1, img2, img3];
 
 const App = () => {
   const [play, setPlay] = useState(false);
