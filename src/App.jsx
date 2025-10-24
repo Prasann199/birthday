@@ -1,12 +1,12 @@
-import { useEffect, useRef, useState } from "react";
+  import { useEffect, useRef, useState } from "react";
 import Confetti from "react-confetti";
 import { Howl } from "howler";
 import gsap from "gsap";
 import "./index.css";
 
-import img1 from "./assets/img1.jpeg";
-import img2 from "./assets/img2.jpeg";
-import img3 from "./assets/img4.jpeg";
+import img1 from "./assets/img1.jpg";
+import img2 from "./assets/img2.jpg";
+import img3 from "./assets/img4.jpg";
 import music from "./assets/birthdayMusic.mp3";
 
 const images = [img1, img2, img3,img1, img2, img3,img1, img2, img3];
@@ -65,8 +65,8 @@ const App = () => {
           ref={textRef}
           className="bg-white/70 backdrop-blur-sm px-6 py-4 rounded-xl shadow-lg max-w-2xl mx-4 text-center text-xl md:text-2xl font-semibold text-pink-700"
         >
-           🎉 Happy Birthday Srujana! 🎉<br />
-        Wishing you a magical day full of love, smiles, and sweet surprises. You're a treasure and I’m lucky to have you in my life. 💖
+           🎉 ಜನ್ಮ ದಿನದ ಶುಭಾಶಯಗಳು ಅಣ್ಣಾ! 🎉<br />
+        Wishing you a day filled with laughter, joy, and all your favorite things. You deserve the best, always! 💖
         </div>
       </div>
     </div>
