@@ -8,49 +8,43 @@ html, body {
   background-color: #ffeef2;
 }
 
-img {
-  max-width: 100%;
-  object-fit: cover;
-}
 .scroll-container {
+  position: relative;
   width: 100%;
-  white-space: nowrap;
+  height: 100vh;
   overflow: hidden;
+  white-space: nowrap;
 }
 
 .scroll-track {
   display: inline-flex;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  animation: scroll 25s linear infinite;
-  flex-wrap: nowrap;
   align-items: stretch;
   will-change: transform;
-  min-width: 200%;
-  
+  backface-visibility: hidden;
+  transform: translateZ(0);
+  animation: scroll 30s linear infinite;
 }
 
+/* Each image same height as viewport */
 .scroll-image {
-  width: 100%;
   height: 100vh;
+  width: auto;
   object-fit: cover;
+  flex-shrink: 0;
   margin-right: 10px;
   border-radius: 10px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
+/* Move by half since we duplicate the array */
 @keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-85%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-@media (max-width:600px) {
+
+/* Mobile: slower for readability */
+@media (max-width: 600px) {
   .scroll-track {
-  display: inline-flex;
-  animation: scroll 10s linear infinite;
- 
-}
+    animation: scroll 45s linear infinite;
+  }
 }
