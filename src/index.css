@@ -46,9 +46,7 @@ img {
 @media (max-width:600px) {
   .scroll-track {
   display: inline-flex;
-  animation: scroll 25s linear infinite;
- :root {
-    --scroll-duration: 25s;
-  }
+  animation: scroll 15s linear infinite;
+ 
 }
 }
