@@ -20,7 +20,10 @@ img {
 
 .scroll-track {
   display: inline-flex;
+  backface-visibility: hidden;
+  transform: translateZ(0);
   animation: scroll 35s linear infinite;
+  will-change: transform;
 }
 
 .scroll-image {
@@ -43,7 +46,9 @@ img {
 @media (max-width:600px) {
   .scroll-track {
   display: inline-flex;
-  animation: scroll 45s linear infinite;
- 
+  animation: scroll 25s linear infinite;
+ :root {
+    --scroll-duration: 25s;
+  }
 }
 }

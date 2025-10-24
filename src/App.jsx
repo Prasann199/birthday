@@ -13,47 +13,75 @@ const images = [img1, img2, img3,img1, img2, img3,img1, img2, img3];
 
 const App = () => {
   const [play, setPlay] = useState(false);
+  const [imagesLoaded, setImagesLoaded] = useState(0);
   const textRef = useRef();
+  const trackRef = useRef(null);
+  const soundRef = useRef(null);
 
   useEffect(() => {
-    alert("click on the screen to start celebration!")
-    // Play birthday song
+    alert("click on the screen to start celebration!");
+
+    // prepare sound and play
     const sound = new Howl({
-      src: [music], // Place this in public/assets/
+      src: [music],
       volume: 0.5,
     });
-    sound.play();
-    
-    // // Animate birthday message
-    // gsap.from(textRef.current, {
-    //   opacity: 0,
-    //   y: 30,
-    //   duration: 1.5,
-    //   delay: 1,
-    // });
+    soundRef.current = sound;
+    // try to play (may fail on some mobile browsers until user interaction)
+    try {
+      sound.play();
+      setPlay(true);
+    } catch (e) {
+      // autoplay blocked — user can tap to start
+    }
 
-    
+    // cleanup
+    return () => {
+      if (soundRef.current) soundRef.current.unload();
+    };
   }, []);
-  const playMusic=()=>{
-    sound.play();
-    setPlay(true);
-  }
+  const playMusic = () => {
+    if (soundRef.current) {
+      soundRef.current.play();
+      setPlay(true);
+    }
+  };
+
+  // total images in the scrolling track (we duplicate the array for seamless loop)
+  const totalImages = images.length * 2;
+
+  // when each image loads, increment counter
+  const onImgLoad = () => {
+    setImagesLoaded((n) => n + 1);
+  };
+
+  // start the CSS animation once all images are loaded to avoid jank
+  useEffect(() => {
+    if (imagesLoaded >= totalImages && trackRef.current) {
+      const duration = window.innerWidth <= 600 ? 45 : 35;
+      trackRef.current.style.setProperty("--scroll-duration", `${duration}s`);
+      trackRef.current.classList.add("scrolling");
+    }
+  }, [imagesLoaded, totalImages]);
 
   return (
     <div className="relative bg-pink-100 w-full h-screen overflow-hidden" onClick={playMusic}>
-      {/* Confetti */}
-      {1 && <Confetti numberOfPieces={300} recycle={true} />}
+      {/* Confetti: reduce pieces on small screens */}
+      {typeof window !== "undefined" && (
+        <Confetti numberOfPieces={window.innerWidth <= 600 ? 80 : 300} recycle={true} />
+      )}
 
       {/* Scrolling Images */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 .scroll-container">
-        <div className="flex h-full w-max animate-scroll-x scroll-track">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0 scroll-container">
+        <div ref={trackRef} className="flex h-full w-max scroll-track">
           {[...images, ...images].map((img, index) => (
             <img
               key={index}
               src={img}
               alt={`img${index}`}
-              className="h-full w-auto object-cover mx-2"
+              className={`scroll-image h-full w-auto object-cover mx-2`}
               loading="lazy"
+              onLoad={onImgLoad}
             />
           ))}
         </div>

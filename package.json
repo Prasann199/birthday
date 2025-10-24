@@ -6,8 +6,8 @@
   "homepage": "http://Prasann199.github.io/birthday",
 
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+  "predeploy": "npm run build",
+  "deploy": "gh-pages -d dist",
     "build": "vite build",
     "start": "vite",
     "lint": "eslint ."
