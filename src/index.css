@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss";
 
 html, body {
   margin: 0;
@@ -49,4 +49,25 @@ img {
   animation: scroll 8s linear infinite;
  
 }
+} */
+
+.scroll-track {
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  transform: translateZ(0);
+  animation: none;
+}
+
+.scroll-track.scrolling {
+  animation: scroll var(--scroll-duration, 35s) linear infinite;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
 }

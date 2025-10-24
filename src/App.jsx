@@ -19,6 +19,18 @@ const App = () => {
   const soundRef = useRef(null);
 
   useEffect(() => {
+  const root = document.documentElement;
+  if (window.innerWidth <= 600) {
+    root.style.setProperty("--scroll-duration", "25s");
+  } else {
+    root.style.setProperty("--scroll-duration", "35s");
+  }
+
+  // start scroll animation after load
+  const track = document.querySelector(".scroll-track");
+  setTimeout(() => track.classList.add("scrolling"), 1000);
+}, []);
+  useEffect(() => {
     alert("click on the screen to start celebration!");
 
     // prepare sound and play
